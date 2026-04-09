@@ -3,21 +3,36 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "../login/page.module.css";
-import { Suspense } from "react";
+import { Suspense, useState, useTransition } from "react";
+import { signUpUser } from "../actions/auth";
 
 function SignupForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const role = searchParams.get("role") || "creator";
   const isCreator = role === "creator";
+  
+  const [error, setError] = useState("");
+  const [isPending, startTransition] = useTransition();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (isCreator) {
-      router.push("/creator/dashboard");
-    } else {
-      router.push("/brand/dashboard");
-    }
+    setError("");
+    const formData = new FormData(e.currentTarget);
+    formData.append("role", role);
+
+    startTransition(async () => {
+      const result = await signUpUser(formData);
+      if (result.error) {
+        setError(result.error);
+      } else {
+        if (isCreator) {
+          router.push("/creator/dashboard");
+        } else {
+          router.push("/brand/dashboard");
+        }
+      }
+    });
   };
 
   return (
@@ -40,6 +55,8 @@ function SignupForm() {
           </p>
         </div>
 
+        {error && <div style={{ color: '#ef4444', textAlign: 'center', marginBottom: '1rem', background: 'rgba(239,68,68,0.1)', padding: '0.5rem', borderRadius: '8px' }}>{error}</div>}
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="name">
@@ -48,6 +65,7 @@ function SignupForm() {
             <input 
               className={styles.input} 
               id="name" 
+              name="name"
               type="text" 
               placeholder={isCreator ? "Alex Doe" : "Acme Corp"} 
               required 
@@ -59,6 +77,7 @@ function SignupForm() {
             <input 
               className={styles.input} 
               id="email" 
+              name="email"
               type="email" 
               placeholder="you@example.com" 
               required 
@@ -70,14 +89,15 @@ function SignupForm() {
             <input 
               className={styles.input} 
               id="password" 
+              name="password"
               type="password" 
               placeholder="Create a strong password" 
               required 
             />
           </div>
 
-          <button className={`btn btn-primary ${styles.submitBtn}`} type="submit">
-            Create Account
+          <button className={`btn btn-primary ${styles.submitBtn}`} type="submit" disabled={isPending}>
+            {isPending ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
