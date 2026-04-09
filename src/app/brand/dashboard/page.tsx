@@ -30,18 +30,18 @@ export default function BrandDashboard() {
         <section className={styles.statsGrid}>
           <div className={styles.statCard}>
             <div className={styles.statLabel}>Total Reach</div>
-            <div className={styles.statValue}>5.4M</div>
-            <div className={styles.statTrend}>Across 3 active campaigns</div>
+            <div className={styles.statValue}>0</div>
+            <div className={styles.statTrend}>No active campaigns</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statLabel}>Active Campaigns</div>
-            <div className={styles.statValue}>3</div>
-            <div className={styles.statTrend}>1 recruiting</div>
+            <div className={styles.statValue}>0</div>
+            <div className={styles.statTrend}>Create one to start</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statLabel}>ROI Estimate</div>
-            <div className={styles.statValue}>240%</div>
-            <div className={styles.statTrend}>+12% from last quarter</div>
+            <div className={styles.statValue}>0%</div>
+            <div className={styles.statTrend}>No data available</div>
           </div>
         </section>
 
@@ -54,74 +54,15 @@ export default function BrandDashboard() {
               </Link>
             </div>
             
-            <div className={styles.card}>
-              <div className={styles.campaignItem}>
-                <div className={styles.campaignInfo}>
-                  <h3>Summer Collection Launch</h3>
-                  <div className={styles.campaignCreator}>Partnering with Alex Doe</div>
-                </div>
-                <div className={`${styles.campaignStatus} ${styles.statusActive}`}>
-                  In Progress
-                </div>
-              </div>
-
-              <div className={styles.campaignItem}>
-                <div className={styles.campaignInfo}>
-                  <h3>Holiday Tech Bundle</h3>
-                  <div className={styles.campaignCreator}>2/5 Creators Hired</div>
-                </div>
-                <div className={`${styles.campaignStatus} ${styles.statusRecruiting}`}>
-                  Recruiting
-                </div>
-              </div>
-              
-              <div className={styles.campaignItem}>
-                <div className={styles.campaignInfo}>
-                  <h3>Fitness App Promo</h3>
-                  <div className={styles.campaignCreator}>Partnering with Sarah Fit</div>
-                </div>
-                <div className={`${styles.campaignStatus} ${styles.statusActive}`}>
-                  In Progress
-                </div>
-              </div>
+            <div className={styles.card} style={{ textAlign: "center", padding: "3rem 1rem", color: "var(--muted)" }}>
+              No active campaigns yet.
             </div>
           </section>
 
           <section className={styles.suggestedBrands}>
             <h2 className={styles.sectionTitle}>Top Creators for You</h2>
-            <div className={styles.card}>
-              <div className={styles.creatorMatch}>
-                <div className={styles.creatorOverview}>
-                  <div className={styles.creatorAvatar}>SJ</div>
-                  <div className={styles.creatorInfo}>
-                    <h4>Sam Johnson</h4>
-                    <div className={styles.creatorTags}>Tech • 1.2M Subs</div>
-                  </div>
-                </div>
-                <div className={styles.matchScore}>98% Match</div>
-              </div>
-              
-              <div className={styles.creatorMatch}>
-                <div className={styles.creatorOverview}>
-                  <div className={styles.creatorAvatar}>ML</div>
-                  <div className={styles.creatorInfo}>
-                    <h4>Mia Lifestyle</h4>
-                    <div className={styles.creatorTags}>Fashion • 500k Subs</div>
-                  </div>
-                </div>
-                <div className={styles.matchScore}>94% Match</div>
-              </div>
-              
-              <div className={styles.creatorMatch}>
-                <div className={styles.creatorOverview}>
-                  <div className={styles.creatorAvatar}>RJ</div>
-                  <div className={styles.creatorInfo}>
-                    <h4>Ryan Journeys</h4>
-                    <div className={styles.creatorTags}>Travel • 800k Subs</div>
-                  </div>
-                </div>
-                <div className={styles.matchScore}>89% Match</div>
-              </div>
+            <div className={styles.card} style={{ textAlign: "center", padding: "3rem 1rem", color: "var(--muted)" }}>
+              No top creators matched yet.
             </div>
           </section>
         </div>

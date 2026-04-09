@@ -17,71 +17,20 @@ export default function MessagesPage() {
           <div className={styles.sidebarHeader}>
             <input type="text" placeholder="Search conversations..." className={styles.search} />
           </div>
-          <div className={styles.conversationList}>
-            <div className={`${styles.conversation} ${styles.conversationActive}`}>
-              <div className={styles.avatar}>A</div>
-              <div className={styles.conversationInfo}>
-                <div className={styles.conversationHeader}>
-                  <span className={styles.name}>Acme Corp</span>
-                  <span className={styles.time}>2m</span>
-                </div>
-                <div className={styles.preview}>Can you review the brief?</div>
-              </div>
-            </div>
-            
-            <div className={styles.conversation}>
-              <div className={styles.avatar} style={{background: '#3b82f6'}}>F</div>
-              <div className={styles.conversationInfo}>
-                <div className={styles.conversationHeader}>
-                  <span className={styles.name}>FitLife</span>
-                  <span className={styles.time}>1h</span>
-                </div>
-                <div className={styles.preview}>The post looks amazing! Thanks.</div>
-              </div>
-            </div>
+          <div className={styles.conversationList} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--muted)'}}>
+            No recent conversations.
           </div>
         </aside>
 
         <section className={styles.chatArea}>
           <div className={styles.chatHeader}>
             <div>
-              <h2 className={styles.chatTitle}>Acme Corp</h2>
-              <div className={styles.chatSubtitle}>Summer Collection Launch</div>
+              <h2 className={styles.chatTitle} style={{ color: 'var(--muted)' }}>Select a conversation</h2>
             </div>
-            <button className="btn btn-secondary" style={{ padding: '0.5rem 1rem' }}>View Brief</button>
           </div>
 
-          <div className={styles.messages}>
-            <div className={`${styles.message} ${styles.messageReceived}`}>
-              Hi Alex! We loved your recent videos and think you'd be a perfect fit for our upcoming Summer Collection launch.
-            </div>
-            
-            <div className={`${styles.message} ${styles.messageOffer}`}>
-              <div className={styles.offerTitle}>Initial Offer Draft</div>
-              <div className={styles.offerDetails}>
-                <div className={styles.offerRow}>
-                  <span style={{ color: 'var(--muted)' }}>Deliverables</span>
-                  <span>1x TikTok, 1x IG Reel</span>
-                </div>
-                <div className={styles.offerRow}>
-                  <span style={{ color: 'var(--muted)' }}>Timeline</span>
-                  <span>June 15 - June 30</span>
-                </div>
-                <div className={styles.offerRow}>
-                  <span style={{ color: 'var(--muted)' }}>Budget</span>
-                  <span style={{ fontWeight: 'bold' }}>₹2,50,000</span>
-                </div>
-              </div>
-              <button className="btn btn-primary" style={{ width: '100%', padding: '0.5rem' }}>Review Details</button>
-            </div>
-
-            <div className={`${styles.message} ${styles.messageSent}`}>
-              Thanks for reaching out! I'd love to learn more and review the brief.
-            </div>
-            
-            <div className={`${styles.message} ${styles.messageReceived}`}>
-              Awesome. Just sent over the brief details. Let me know if you have any questions or want to jump on a quick call!
-            </div>
+          <div className={styles.messages} style={{ justifyContent: 'center', alignItems: 'center', color: 'var(--muted)' }}>
+            Start collaborating by sending a message!
           </div>
 
           <div className={styles.inputArea}>
