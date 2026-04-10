@@ -97,7 +97,11 @@ function SignupForm() {
           </div>
 
           <button className={`btn btn-primary ${styles.submitBtn}`} type="submit" disabled={isPending}>
-            {isPending ? "Creating Account..." : "Create Account"}
+            {isPending ? (
+              <><span className="spinner"></span> Creating Account...</>
+            ) : (
+              "Create Account"
+            )}
           </button>
         </form>
 

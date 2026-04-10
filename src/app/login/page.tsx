@@ -3,21 +3,27 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 
 function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const role = searchParams.get("role") || "creator";
   const isCreator = role === "creator";
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isCreator) {
-      router.push("/creator/dashboard");
-    } else {
-      router.push("/brand/dashboard");
-    }
+    setIsSubmitting(true);
+    
+    // Simulating network delay to show off animation
+    setTimeout(() => {
+      if (isCreator) {
+        router.push("/creator/dashboard");
+      } else {
+        router.push("/brand/dashboard");
+      }
+    }, 1000);
   };
 
   return (
@@ -63,8 +69,12 @@ function LoginForm() {
             />
           </div>
 
-          <button className={`btn btn-primary ${styles.submitBtn}`} type="submit">
-            Sign In
+          <button className={`btn btn-primary ${styles.submitBtn}`} type="submit" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <><span className="spinner"></span> Signing In...</>
+            ) : (
+              "Sign In"
+            )}
           </button>
         </form>
 
